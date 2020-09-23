@@ -1,0 +1,89 @@
+<div class="add-new-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-form-container">
+          <div class="mat-dialog-title">
+            <div class="text-header">
+              <h5 class="modal-title add-new-title text-center">ADD NEW SALE</h5>
+            </div>
+            <button type="button" class="close cancel-btn" (click)="cancelClick()" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <mat-dialog-content class="mat-typography">
+            <form class="page-form">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label label-style">Full Name : </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control input-font-size" 
+                      id="name" name="name" placeholder="Enter name..." [(ngModel)]="user.name">
+                    </div>
+                </div>
+                <!-- <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">User Name : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" id="uname" name="uname" placeholder="Enter user name...">
+                  </div>
+                </div> -->
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Role : </label>
+                  <div class="col-sm-8">
+                    <select name="filterrole" id="filterrole"
+                      class="form-control" [(ngModel)]="selectedRole">
+                      <option [ngValue]="undefined">--Select Role--</option>
+                      <option *ngFor="let role of rolelist" [ngValue]="role">{{role.name}}</option>
+                    </select> 
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Email : </label>
+                  <div class="col-sm-8">
+                    <input type="email" class="form-control input-font-size" id="email" 
+                    name="email" placeholder="Enter email..." [(ngModel)]="user.email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Password : </label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control input-font-size" id="password" name="password" 
+                    placeholder="Password..." [(ngModel)]="user.password">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Re-type Password : </label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control input-font-size" id="repassword" 
+                    name="repassword" placeholder="Re-type password..." [(ngModel)]="user.repassword">
+                  </div>
+                </div>
+                <div class="form-group row" style="display: none;">
+                  <label for="name" class="col-sm-4 col-form-label label-style" >Address : </label>
+                  <div class="col-sm-8">
+                      <textarea class="form-control resize-textarea" id="address" name="address"  rows="5" 
+                      placeholder="Enter address..." [(ngModel)]="user.address"></textarea>
+                  </div>
+                </div>
+                
+                <div class="form-group row" style="display: none;">
+                    <label for="name" class="col-sm-4 col-form-label label-style">Phone : </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control input-font-size" id="phone" 
+                      name="phone" placeholder="Enter phone number..." [(ngModel)]="user.phone">
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                  <button type="button" mat-raised-button class="btn btn-primary btn-style send-btn" 
+                    (click)="clickOnSave()">
+                      Save</button>
+                  <button type="button" mat-raised-button class="btn btn-default btn-style reset-btn" 
+                    (click)="clickOnReset()">
+                      Reset</button>
+                </div>
+            </form>
+          </mat-dialog-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

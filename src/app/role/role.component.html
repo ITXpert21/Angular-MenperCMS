@@ -1,0 +1,47 @@
+<div class="main-container">
+  <div class="col-md-12" style="padding:0">
+    <div class="header-container">
+      <div class="top-headerstyle">
+        <h5 class="text-left top-head-style">Role</h5>
+        <div class="add-space"></div>
+        <div class="add-new-btn-right" (click)="addNewRoleClick()">
+            <button type="button" class="btn add-new-btn pull-right" >
+              <span class="plus-icon"><i class="fa fa-plus"></i></span>ADD NEW ROLE</button>
+        </div> 
+      </div>
+    </div>
+    <div class="table-container">
+        <h6 class="view-style">View all</h6>
+        <div class="item-table table-scroll-container">
+          <div class="table-test" style="height: 450px;">
+            <table class="table table-bordered table-striped table-condensed">
+              <thead>
+                <tr class="text-left table-row">
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="table-body text-left">
+                <tr *ngFor="let role of rolelist let i=index">
+                  <td>{{i + 1}}</td>
+                  <td>{{role.name}}</td>
+                  <td>
+                      <div class="action-sec">
+                        <button class="action-btn" [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item (click)="EditRoleClick(role)">EDIT</button>
+                          <button mat-menu-item (click)="DeleteRoleClick(role)">DELETE</button>
+                        </mat-menu>
+                      </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <app-loading-spinner  *ngIf="page.loading"></app-loading-spinner> -->
+          </div>
+        </div>
+    </div>
+   
+</div>
+</div>

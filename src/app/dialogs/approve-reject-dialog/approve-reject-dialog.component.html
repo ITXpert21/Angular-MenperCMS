@@ -1,0 +1,12 @@
+<div mat-dialog-container class="dialog-content">
+  <div class="clear-icon-sec text-right">
+    <mat-icon class="clear-icon text-right" (click)="cancelClick()">clear</mat-icon>
+  </div>
+<h2 mat-dialog-title class="text-center dialog-title">{{title}}</h2>
+<h4 mat-dialog-content class="text-center dialog-sub-title">{{descr}}</h4>
+<div class="amend-approve-btn text-center">
+  <button class="amend-btn" (click)="rejectClick()">{{rejectTitle}}</button>
+  <button class="approve-btn" (click)="approveClick()">{{approveTitle}}</button>
+</div>
+</div>
+

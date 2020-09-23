@@ -1,0 +1,74 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+.mat-dialog-content{
+    margin: 0;
+    padding: 0;
+}
+.dialog-toolbar{
+    background-color: #c3ccf7;
+    padding: 0px 30px;
+}
+.letter-text{
+    font-family: Montserrat;
+    font-weight: 500;
+    border: 2px solid #000;
+    margin-bottom: 0px;
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    border-radius: 50%;
+    color: #000;
+}
+.clear-icon{
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 600;
+}
+.dialog-header-content{
+}
+.dialog-header{
+    margin-left: 20px;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.suspend_btn{
+    background-color: #DF8C40;
+    color: #fff;
+    border-radius: 3px;
+    padding: 8px 18px;
+    box-shadow: 0 0 40px rgba(223,140,64, .3);
+    border: 0;
+    outline: none;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.suspend_worker_button{
+    padding: 30px 0 10px 0;
+}
+.dialog-subject{
+    padding: 30px 40px;
+}
+.dialog-subject p{
+    font-size: 16px;
+    font-weight: 500;
+}
+.details_content{
+    background-color: #f4f4f4;
+    padding: 25px 50px 25px;
+}
+.details_content p{
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 25px;
+}
+.details_content span{
+    padding: 0 5px;
+}
+/* .mat-toolbar-row{
+    height: 85px;
+} */

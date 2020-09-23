@@ -1,0 +1,113 @@
+<div class="main-container">
+    <div class="col-md-12" style="padding:0">
+      <div class="header-container">
+        <div class="top-headerstyle">
+            <h5 class="text-left top-head-style">Order</h5>
+            <div class="add-space"></div>
+        </div>
+      </div>
+      <div class="table-container">
+
+        <div class="table-view">
+          <h6 class="view-style">View all</h6>
+          <div class="add-space"></div>
+          <div class="pull-right select-container">
+            <select name="filtersales" id="filtersales" (change)="selectSearchMethod($event.target.value)"
+            class="form-control" [(ngModel)]="selectedDate">
+              <option ng-selected="selectedDate" value="">--All Date--</option>
+              <option ng-selected="selectedDate" value="1">LAST 7 DAYS</option>
+              <option ng-selected="selectedDate" value="2">LAST 30 DAYS</option>
+              <option ng-selected="selectedDate" value="3">CUSTOM</option>
+
+            </select>
+            <!-- <input type="text"  placeholder="Search" [(ngModel)]="query"> -->
+          </div>
+          <div style="margin-left: 10px; margin-bottom: 12px;" *ngIf="selecetedCustomSearch">
+            <div class="input-group" style="width: 200px;">
+              <input id="datepicker1" class="form-control" [(ngModel)]="fromDate" placeholder="From : yyyy-mm-dd"  ngbDatepicker #fromdate="ngbDatepicker" required 
+              (ngModelChange)="selectFromDate(fromDate)" pattern="[0-9]{4}[-][0-9]{2}[-][0-9]{2}">       
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="fromdate.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom: 12px; margin-left: 10px;" *ngIf="selecetedCustomSearch">
+            <div class="input-group" style="width: 200px;">
+              <input id="datepicker2" class="form-control" [(ngModel)]="endDate" placeholder="To : yyyy-mm-dd"  ngbDatepicker #enddate="ngbDatepicker" required 
+              (ngModelChange)="selectEndDate(endDate)" pattern="[0-9]{4}[-][0-9]{2}[-][0-9]{2}">       
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="enddate.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>              
+          <div style="margin-left: 10px; margin-bottom: 12px;">
+           <input type="text" placeholder="Search By Client" [(ngModel)]="searchClientName" class="form-control"  (input)="onSearchByClient($event)"/>
+          </div> 
+        </div>
+
+          <div class="item-table table-scroll-container" style="margin-bottom: 20px;">
+            <div class="table-test" style="height: 600px;">
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr class="text-left table-row">
+                    <th>No</th>
+                    <th>Client</th>
+                    <th>Sales</th>
+                    <th>Order Time</th>
+                    <th>Accepted</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body text-left">
+                  <tr *ngFor="let order of orderlistBySearch | paginate: { itemsPerPage: 10, currentPage: p, totalItems: totalItems } let i=index">
+                    <td>{{order.number}}</td>
+                    <td>{{order.client_name}}</td>
+                    <td *ngIf="order.salesperson!=undefined">{{order.salesperson.name}}</td>
+                    <td *ngIf="order.salesperson==undefined"></td>
+
+                    <!-- <td>{{order.order_time.toDate() | date:'HH:mm MMM dd, yyyy'}}</td> -->
+                    <td>{{order.order_time && order.order_time.toDate() | date:'HH:mm MMM dd, yyyy'}}</td>
+                    <td *ngIf="order.accepted == 'Y'">Completed</td>
+                    <td *ngIf="order.accepted == 'N'">Pending</td>
+                    <td [ngStyle]="{'background-color': (order.accepted =='N') ? '#aaaaab' : (order.accepted =='Y') ? '' : ''}">
+                      <div class="action-sec">
+                        <button class="action-btn" 
+                        [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                        <mat-menu #menu="matMenu">
+
+                          <button mat-menu-item (click)="DetailOrderClick(order)">DETAIL</button>
+                          <button mat-menu-item *ngIf="order.accepted =='N'" (click)="orderAcceptClick(order)">ACCEPT</button>
+                          <button mat-menu-item *ngIf="order.accepted =='Y'" (click)="orderCancelClick(order)">REJECT</button>
+                          <button mat-menu-item (click)="DeleteOrderClick(order)">DELETE</button>
+                        </mat-menu>
+                      </div>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                      <td>2</td>
+                      <td>Florida Dr . Services	</td>
+                      <td>blanca alfaro</td>
+                      <td>2019-04-12 12:43:53</td>
+                      <td>Yes</td>
+                      <td>
+                        <div class="action-sec">
+                          <button class="action-btn" 
+                          [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="AcceptOrderClick()">ACCEPT</button>
+                            <button mat-menu-item (click)="DeleteOrderClick()">DELETE</button>
+                          </mat-menu>
+                        </div>
+                      </td>
+                    </tr>-->
+                   
+                </tbody>
+              </table>
+              <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>
+            </div>
+          </div>
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      </div>
+      
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<div class="add-new-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-form-container">
+          <div class="mat-dialog-title">
+            <div class="text-header">
+              <h5 class="modal-title add-new-title text-center">ADD PRODUCT</h5>
+            </div>
+            <button type="button" class="close cancel-btn" (click)="cancelClick()" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <mat-dialog-content class="mat-typography">
+            <form class="page-form">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label label-style">Category : </label>
+                    <!-- <div class="col-sm-8">
+                      <input type="text" class="form-control input-font-size" id="name" name="name" placeholder="Enter name...">
+                    </div> -->
+                    <div class="col-sm-8">
+                      <!-- <select name="filtersales" id="filtersales" 
+                      class="form-control input-font-size" [(ngModel)]="product.category">
+                          <option value="0">Select Category</option>
+                          <option value="Apothecary">APOTHECARY</option>
+                          <option value="Beauty">BEAUTY</option>
+                          <option value="Blister Medina">BLISTER</option>
+                          <option value="Cara">CARA</option>
+                          <option value="Complementos Alimenticios">COMPLEMENTOS ALIMENTICIOS</option>
+                          <option value="Dela cruz">DELA CRUZ PRODUCTS</option>
+                          <option value="Med otc">MED OTC</option>  
+                      </select> -->
+                      <select name="filtersales" id="filtersales"
+                      class="form-control" [(ngModel)]="selectedCategory">
+                        <option [ngValue]="undefined">--All Category--</option>
+                        <option *ngFor="let category of categorylist" [ngValue]="category">{{category.name}}</option>
+                      </select> 
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Code : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" id="code" 
+                    name="code" placeholder="Code" [(ngModel)]="product.code">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Name : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size namecaps" id="name" 
+                    name="name" placeholder="Name" [(ngModel)]="product.name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Description : </label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control resize-textarea" id="description" name="description"  rows="5" 
+                      placeholder="Description" [(ngModel)]="product.description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Quantity : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" id="quantity" 
+                    name="quantity" placeholder="Quantity" [(ngModel)]="product.quantity" uaNumberOnly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Price : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" id="price" 
+                    name="price" placeholder="Price" [(ngModel)]="product.price" uaNumberOnly>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label label-style">Size : </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control input-font-size" id="size" 
+                      name="size" placeholder="Size" [(ngModel)]="product.size">
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Flavor : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" 
+                    id="flavor" name="flavor" placeholder="Flavor" [(ngModel)]="product.flavor">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="productPicInputId" class="col-sm-4 col-form-label label-style">Picture : </label>
+                  <div class="col-sm-8">
+                    <div class="file-choosen">
+                      <input id="productPicInputId" type='file' (change)="readProductPicURL($event)" />
+                    </div>
+
+                    <!-- <div class="assignment-image">
+                      <label for="profilePicInputId">
+                          <img id="profilePic" 
+                          [src]="profilePic ||  'assets/add-new-assignment-image.jpg' " alt="profile picture" />
+                        </label>
+                         <input id="profilePicInputId" type='file' (change)="readProfilePicURL($event)" />
+                    </div> -->
+                    <div class="progress-container" *ngIf="((productPicUpload!=undefined) && (productPicUpload.progress != 100))">
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': productPicUpload?.progress + '%' }">
+                          
+                        </div>
+                      </div>
+                      Progress: {{productPicUpload?.name}} | {{productPicUpload?.progress}}% Complete
+                    </div>
+                   
+                    <div class="below-file-sec">
+                      <p>[ * .png * .jpg][600kb][400px * 675px]</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group text-center">
+                  <button type="button" mat-raised-button class="btn btn-primary btn-style send-btn" 
+                    (click)="clickOnSave()">
+                      Save</button>
+                  <button type="button" mat-raised-button class="btn btn-default btn-style reset-btn" 
+                    (click)="clickOnReset()">
+                      Reset</button>
+                </div>
+            </form>
+          </mat-dialog-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

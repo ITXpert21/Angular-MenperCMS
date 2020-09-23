@@ -1,0 +1,48 @@
+<div class="login-body">
+  <div class="container">
+      <div class="row">
+          <div class="offset-md-3 col-md-6">
+               <div class="login-form">
+                    <div class="logocontainer">
+                        <img src="../../../assets/login/Logo.png">
+                    </div>
+                    <div class="formcontainer">
+                        <h3 class="text-center text-color-top">Login</h3>
+                        <form class="loginformcontainer">
+                            <div class="form-group">
+                                <input type="email" class="form-control form-input" id="exampleInputEmail" name="email"
+                                aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="email">
+                                
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control form-input" name="password"
+                                id="exampleInputPassword" placeholder="Password" [(ngModel)]="password">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" mat-raised-button class="btn btn-primary btn-block login-btn" 
+                                (click)="onLoginClick()">
+                                    SIGN IN</button>
+                            </div>
+                            <div class="form-group">
+                                <a (click)="onPasswordRecoveryClick()" class="text-forgot text-center">
+                                    <h6 class="text-center">Lost password?</h6>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- <div class="footer_register">
+      <div class="container">
+        <div class="row">
+          <div class="offset-md-3 col-md-6">
+            <p class="footer_text text-center">Copyright © 2019 Menper. All Rights Reserved.
+                </p>
+          </div>
+      </div>
+  </div> -->
+
+</div>   

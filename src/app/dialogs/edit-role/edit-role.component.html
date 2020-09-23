@@ -1,0 +1,35 @@
+<div class="add-new-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-form-container">
+            <button type="button" class="close cancel-btn" (click)="cancelClick()" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+         
+          <div class="text-header">
+              <h5 class="modal-title add-new-title text-center">EDIT ROLE</h5>
+              
+            </div>
+          <form class="page-form">
+              <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label label-style">Name : </label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control input-font-size" id="name" name="name" 
+                    [(ngModel)]="role.name">
+                  </div>
+              </div>
+              <div class="form-group text-center">
+                <button type="button" mat-raised-button 
+                class="btn btn-primary btn-style send-btn" (click)="clickOnSave()">
+                    Save</button>
+                <!-- <button type="button" mat-raised-button class="btn btn-default btn-style reset-btn" 
+                  (click)="clickOnReset()">
+                    Close</button> -->
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

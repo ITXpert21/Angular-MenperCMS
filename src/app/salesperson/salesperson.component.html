@@ -1,0 +1,54 @@
+<div class="main-container">
+  <div class="col-md-12" style="padding:0">
+    <div class="header-container">
+      <div class="top-headerstyle">
+        <h5 class="text-left top-head-style">sale</h5>
+        <div class="add-space"></div>
+        <div class="add-new-btn-right" (click)="addNewSalesClick()">
+            <button type="button" class="btn add-new-btn pull-right" >
+              <span class="plus-icon"><i class="fa fa-plus"></i></span>ADD NEW SALES</button>
+        </div> 
+      </div>
+    </div>
+    <div class="table-container">
+        <h6 class="view-style">View all</h6>
+        <div class="item-table table-scroll-container">
+          <div class="table-test" style="height: 450px;">
+            <table class="table table-bordered table-striped table-condensed">
+              <thead>
+                <tr class="text-left table-row text-center">
+                  <th>No</th>
+                  <th>Name</th>
+                  <!-- <th>Address</th> -->
+                  <th>Email</th>
+                  <!-- <th>Phone</th> -->
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody class="table-body text-left text-center">
+                <tr *ngFor="let salesperson of salespersonlist | salespersonFilter : sortSalesPerson let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{salesperson.name}}</td>
+                  <!-- <td>{{salesperson.address == undefined? '-': salesperson.address}}</td> -->
+                  <td>{{salesperson.email}}</td>
+                  <!-- <td>{{salesperson.phone == undefined? '-': salesperson.phone}}</td> -->
+                  <td [ngStyle]="{'background-color': (salesperson.is_active == 'N') ? '#aaaaab' : (salesperson.is_active == 'Y') ? '' : ''}">
+                      <div class="action-sec">
+                        <button class="action-btn" [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                        <mat-menu #menu="matMenu">
+                              <button mat-menu-item (click)="EditSalesClick(salesperson)">EDIT</button>
+                              <button mat-menu-item  *ngIf="(salesperson.is_active == 'Y')" (click)="inactiveSalesClick(salesperson)">INACTIVATE</button>
+                              <button mat-menu-item  *ngIf="(salesperson.is_active == 'N')" (click)="activeSalesClick(salesperson)">ACTIVATE</button>
+                              <button mat-menu-item (click)="DeleteSalesClick(salesperson)">DELETE</button>
+                        </mat-menu>
+                      </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

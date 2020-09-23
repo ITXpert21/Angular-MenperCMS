@@ -1,0 +1,59 @@
+
+.admin-profile{
+    padding: 50px 0;
+}
+.admin-profile-image{
+    width: 180px;
+    height: 180px;
+    margin: auto;
+}
+.admin-profile-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid rgb(101, 78, 226);
+}
+.admin-name{
+    padding: 20px 0 10px;
+}
+.admin-name-line{
+    height: 5px;
+    color: red;
+    width: 135px;
+    height: 3px;
+    background-color: rgb(101, 78, 226);
+    margin: auto;
+}
+.admin-name-btn{
+    background-color: rgb(101, 78, 226);
+    border: rgb(101, 78, 226);
+    margin: 10px 0 0 0;
+    border-radius: 30px;
+    padding: 5px 20px;
+    outline: none;
+}
+.daily-announcement-display{
+    width: 380px;
+    height: 280px;
+    margin: auto;
+    border: 1px solid rgb(101, 78, 226);
+    overflow: auto;
+}
+.daily-announcement-heading{
+    border: 1px solid rgb(101, 78, 226);
+    padding-top: 8px;
+    border-bottom: 2px solid rgb(101, 78, 226);
+    background-image: linear-gradient(rgb(126, 51, 224), rgb(101, 78, 226));
+    color: #fff;
+}
+.daily-announcement-fontawesome{
+    margin-top: 38px;
+    padding: 50px 0;
+    width: 650px;
+    margin: auto;
+}
+.announcement-fontawesome{
+    padding: 0 30px;
+    display: inline-block;
+    color: rgb(101, 78, 226);
+}

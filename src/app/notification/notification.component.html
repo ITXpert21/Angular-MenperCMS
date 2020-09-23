@@ -1,0 +1,106 @@
+<!-- <div class="main-container">
+  <div class="col-md-12" style="padding:0">
+    <div class="header-container">
+        <div class="top-headerstyle">
+          <h5 class="text-left top-head-style">Notification</h5>
+          <div class="add-space"></div>
+          <!-- <div class="add-new-btn-right" (click)="addNewNotificationClick()">
+              <button type="button" class="btn add-new-btn pull-right" >
+                <span class="plus-icon"><i class="fa fa-plus"></i></span>ADD NEW NOTIFICATION</button>
+          </div> 
+      </div>
+    </div>
+    <div class="table-container">
+        <h6 class="view-style">View all</h6>
+        <div class="notifications-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex flex-row dashboard-content-row" *ngFor="let notice of noticeslist">
+                        <div class="letter-sec">
+                            <p class="letter-text text-center">{{notice.orderTitle != undefined? notice.orderTitle.charAt(0).toUpperCase():''}}</p>
+                        </div>
+                        <div class="content-sec w-100">
+                            <div class="row"> 
+                                <div class="col-md-8 col-sm-8">
+                                        <h6 class="content-heading" *ngIf="notice.type == 'orderApproved'">{{notice.orderTitle}}</h6>
+                                        <div class="details-sec">
+                                        <!--<span class="content-text">{{notice.workerTitle}}</span>
+                                        <span class="green-color" *ngIf="notice.type == 'orderNewEntry'">{{notice.header}}</span>
+                                        <span class="date-time p-2">{{notice.createdAt.toDate() | date:'HH:mm MMM dd, yyyy' }}</span>
+                                    </div>
+                                    <button type="button" class="btn details-btn" (click)="openNoticeDetailsDialog(notice)">DETAILS</button>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="icon-img">
+                                        <a (click)="deleteButtonClicked(notice)" class="delete-icon">
+                                            <img src="../../../assets/delete-icon.png">
+                                        </a>
+                                        <span *ngIf="notice.isRead">
+                                            <img src="../../../assets/readnotice.png">
+                                        </span>
+                                        <span *ngIf="!notice.isRead">
+                                            <img src="../../../assets/unreadnotice.png">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+ -->
+
+ <div class="main-container">
+    <div class="col-md-12" style="padding:0">
+      <div class="header-container">
+        <div class="top-headerstyle">
+            <h5 class="text-left top-head-style">Notifications</h5>
+            <div class="add-space"></div>
+        </div>
+      </div>
+      <div class="table-container">
+          <!-- <div class="item-table table-scroll-container" 
+          appScrollable (scrollPosition)="scrollHandler($event)"> -->
+          <div class="item-table table-scroll-container">
+            <div class="table-test" style="height: 450px;">
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr class="text-left table-row">
+                    <th>No</th>
+                    <th>Notification</th>
+                    <th>Date</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body text-left">
+                  <tr *ngFor="let notice of noticeslist let i=index">
+                    <td>{{i+1}}</td> 
+                    <td *ngIf="notice.type == 'orderNewEntry'">{{notice.header}}</td>
+                    <td *ngIf="notice.type == 'registrationNewUser'">{{notice.header}}</td>
+                    <td>{{notice.createdAt.toDate() | date:'HH:mm MMM dd, yyyy' }}</td>
+                    <td>
+                      <div class="action-sec">
+                        <button class="action-btn" 
+                        [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item (click)="openNoticeDetailsDialog(notice)">DETAILS</button>
+                          <button mat-menu-item (click)="deleteButtonClicked(notice)">DELETE</button>
+                        </mat-menu>
+                      </div>
+                    </td>
+                  </tr>
+               
+                </tbody>
+              </table>
+              <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>
+            </div>
+          </div>
+      </div>
+      
+  </div>
+</div>
+

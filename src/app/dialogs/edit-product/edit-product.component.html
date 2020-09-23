@@ -1,0 +1,127 @@
+<div class="edit-new-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-form-container">
+          <div class="mat-dialog-title">
+            <div class="text-header">
+              <h5 class="modal-title edit-new-title text-center">EDIT PRODUCT</h5>
+            </div>
+            <button type="button" class="close cancel-btn" (click)="cancelClick()" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <mat-dialog-content class="mat-typography">
+            <form class="page-form">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label label-style">Category : </label>
+                    <!-- <div class="col-sm-8">
+                      <input type="text" class="form-control input-font-size" id="name" name="name" placeholder="Enter name...">
+                    </div> -->
+                    <div class="col-sm-8">
+                      <!-- <select [(ngModel)]="product.category" id="brandFontmenu" 
+                      [ngModelOptions]="{standalone: true}" class="form-control input-font-size">
+                        <option [ngValue]="undefined">--All Category--</option>
+                        <option *ngFor="let category of categorylist"
+                          [value]="category.name">{{category.name}}
+                        </option>
+                      </select> -->
+                      <select name="filtercategory" id="filtercategory"
+                      class="form-control" [(ngModel)]="selectedCategory">
+                        <option value="">--All Category--</option>
+                        <option *ngFor="let category of categorylist" [ngValue]="category.id">{{category.name}}</option>
+                      </select> 
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Code : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" 
+                    id="code" name="code" [(ngModel)]="product.code">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Name : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" id="name" 
+                    name="name" [(ngModel)]="product.name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Description : </label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control resize-textarea" id="description" 
+                    name="description"  rows="5" 
+                      [(ngModel)]="product.description"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Quantity : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" 
+                    id="quantity" name="quantity" [(ngModel)]="product.quantity">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Price : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" 
+                    id="price" name="price" [(ngModel)]="product.price">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label label-style">Size : </label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control input-font-size" 
+                      id="size" name="size" [(ngModel)]="product.size">
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="flavor" class="col-sm-4 col-form-label label-style">Flavor : </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control input-font-size" 
+                    id="flavor" name="flavor" [(ngModel)]="product.flavor">
+                  </div>
+                </div>
+               
+                <div class="form-group row">
+                  <label for="name" class="col-sm-4 col-form-label label-style">Picture : </label>
+                  <div class="col-sm-8">
+                    <div class="file-choosen">
+                      <input type="file" value="Choose File" 
+                      id="productPicture" 
+                      name="productPicture" (change)="readProductPicURL($event)">
+                    </div>
+                    <div class="edit-image">
+                      <!-- <img id="productPic" [src]="productPic" alt="product picture">-->
+                      <img id="productPic" [src]="getProductImage(product)" alt="product picture" />
+                    </div>
+                    <div class="below-file-sec">
+                      <p>[ * .png * .jpg][600kb][400px * 675px]</p>
+                    </div>
+                    <div class="progress-container" *ngIf="((productPicUpload!=undefined) && (productPicUpload.progress != 100))">
+                      <div class="progress">
+                        <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': productPicUpload?.progress + '%' }">
+                          
+                        </div>
+                      </div>
+                      Progress: {{productPicUpload?.name}} | {{productPicUpload?.progress}}% Complete
+                    </div>
+                  </div>
+                </div>
+               
+                <div class="form-group text-center">
+                  <button type="button" mat-raised-button class="btn btn-primary btn-style send-btn" 
+                    (click)="clickOnSave()">
+                      Save</button>
+                  <button type="button" mat-raised-button class="btn btn-default btn-style reset-btn" 
+                    (click)="cancelClick()">
+                      Cancel</button>
+                </div>
+            </form>
+          </mat-dialog-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

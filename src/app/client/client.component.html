@@ -1,0 +1,86 @@
+<div class="main-container">
+    <div class="col-md-12" style="padding:0">
+      <div class="header-container">
+          <div class="top-headerstyle">
+            <h5 class="text-left top-head-style">Client</h5>
+            <div class="add-space"></div>
+            <div class="add-new-btn-right" (click)="addNewClientClick()">
+                <button type="button" class="btn add-new-btn pull-right" >
+                  <span class="plus-icon">
+                  <i class="fa fa-plus"></i>
+                  </span>ADD NEW CLIENT</button>
+            </div> 
+        </div>
+      </div>
+      <div class="table-container">
+        <div class="table-view">
+          <h6 class="view-style">View all</h6>
+          <div class="add-space"></div>
+          <div class="pull-right select-container">
+              <select name="filtersales" id="filtersales"  (change)="selectCategory($event.target.value)"
+              class="form-control" [(ngModel)]= 'selectedSalesPersonId'> 
+                <option ng-selected="selectedSalesPersonId" value="">--All Sales--</option>
+                <option ng-selected="selectedSalesPersonId" *ngFor="let salesperson of salesPersonList" [value]="salesperson.id">{{salesperson.name}}</option>
+            </select>
+            <!-- <select class="custom-select d-block w-100" id="Category" [(ngModel)]="selected" name="Category" required placeholder="d.ff">
+    					<option [ngValue]="undefined">Select one category </option>
+    					<option *ngFor="let salesperson of salesPersonList" [value]="salesperson.id">{{salesperson.name}}</option>
+    				</select> -->
+          </div> 
+          <div style="margin-left: 10px; margin-bottom: 12px;">
+            <input type="text" placeholder="Search" class="form-control" (input)="onKeypressEvent($event)" />
+           </div>           
+        </div>
+          <div class="item-table table-scroll-container">
+          <div class="table-test" style="height: 600px;">
+              <table class="table table-bordered table-striped table-condensed"> 
+                <thead>
+                  <tr class="text-left table-row">
+                    <th>No</th>
+                    <th>Acc. No.</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Sales Person</th>
+                    <th>Status</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body text-left">
+                    <tr *ngFor="let client of clientlistBySearch let i=index ">
+                      <td>{{i+1}}</td>
+                      <td>{{client.account_number}}</td>
+                      <td>{{client.name}}	</td>
+                      <td>{{client.address}}</td>
+                      <td>{{client.phone}}</td>
+                      <td *ngIf="client.salesperson!=undefined">{{client.salesperson.name}}</td>
+                      <td *ngIf="client.salesperson==undefined"></td>
+                      <td>
+                        <div class="text-center">
+                            <mat-checkbox [checked]='checked' *ngIf="(client.is_active == 'Y')" (click)="inactiveClientClick(client)"></mat-checkbox>
+                            <mat-checkbox  [checked]='unchecked' *ngIf="(client.is_active == 'N')" (click)="activeClientClick(client)"></mat-checkbox>
+                          <!-- <mat-checkbox [(ngModel)]="client.is_active" (change)="onChangeStatus(client)"></mat-checkbox> -->
+                          <!-- <mat-checkbox [checked]='checked' *ngIf="client.is_active == 'Y'"   
+                          (change)="onChange($event)"></mat-checkbox> 
+                          <mat-checkbox [checked]='unchecked' *ngIf="client.is_active == 'N'" (change)="onChange($event)"></mat-checkbox> -->
+                        </div>
+                      </td>
+                      <td>
+                        <div class="action-sec">
+                          <button class="action-btn" 
+                          [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="EditClientClick(client)">EDIT</button>
+                            <button mat-menu-item (click)="DeleteClientClick(client)">DELETE</button>
+                          </mat-menu>
+                        </div>
+                      </td>
+                    </tr>
+                </tbody>
+              </table> 
+              <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div id="content" #content>
+<header class="clearfix" style="padding-left: 20px; padding-right: 20px;">
+  <div id="logo">
+    <img src="../../../assets/order/logo.png">
+  </div>
+  <!-- <h1 style="color: red;">Order Detail</h1> -->
+  <!-- <div id="company" class="clearfix">
+    <div style="font-weight: bold;">SALEPERSON INFO</div>
+    <div><span>NAME: </span>{{order.salesperson.name}}</div>
+    <div><span>EMAIL: </span>{{order.salesperson.email}}</div>
+  </div> -->
+  <div id="project">
+    <div style="font-weight: bold;">CLIENT</div>
+    <div><span>NAME: {{order.client_name}}  </span></div>
+    <div><span>ADDRESS: {{order.client_address}}</span></div>
+  </div>
+  <div id="project1" style="margin-top: 20px;" *ngIf="order.salesperson == undefined" >
+    <div style="font-weight: bold;">SALESPERSON</div>
+    <div><span>NAME: </span></div>
+    <div><span>EMAIL: </span></div>
+  </div>  
+  <div id="project1" style="margin-top: 20px;" *ngIf="order.salesperson != undefined" >
+    <div style="font-weight: bold;">SALESPERSON</div>
+    <div><span>NAME: </span>{{order.salesperson.name}}</div>
+    <div><span>EMAIL: </span>{{order.salesperson.email}}</div>
+  </div>    
+  <div id="company" class="clearfix" style="margin-top: 20px;">
+    <div style="font-weight: bold;">Order ID: <span>{{order.number}} </span></div>
+    <div style="font-weight: bold;">Order Date: <span>{{order_date}} </span></div>
+  </div> 
+</header> 
+<main style="padding-left: 20px; padding-right: 20px;">
+  <table style="margin-top: 40px;">
+    <thead>
+      <tr style="background-color: #0a79a3;">
+        <!-- <th>Product Image</th> -->
+        <th>Product Name</th>
+        <th>PRICE</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productlist">
+        <!-- <td style="text-align: center;">
+          <img [src]="getProductImage(product)" style="width: 80px; height: 80px;">
+        </td> -->
+        <td style="text-align: center; padding: 10px;">{{product.product_name}}</td>
+        <td style="text-align: center;">{{product.price | number:'1.2'}}</td>
+        <td style="text-align: center;">{{product.quantity}}</td>
+        <td style="text-align: center;">${{product.total | number:'1.2'}}</td>
+      </tr>
+    </tbody>
+    <tfoot style="background: rgb(202, 202, 202); padding: 0px;">
+      <tr>
+        <td style="text-align: center; padding: 5px;"> <span style="font-size: 0.9em; font-weight: bold;">Total Price</span></td>
+        <td colspan="2" style="text-align: left;"></td>
+        <td style="text-align: center;"><span style="font-size: 0.9em; font-weight: bold;">${{order.order_totalprice | number:'1.2'}}</span></td>
+      </tr>
+    </tfoot>
+  </table>
+  <div id="notices" style="margin-top: 20px;">
+    <div><span style="font-size: 1em; font-weight: bold;">NOTE:</span></div>
+    <div class="notice"> {{order.note}}</div>
+  </div>
+</main>
+<footer>
+  <div class="text-center">
+    <button type="button" mat-raised-button class="btn btn-primary btn-style send-btn" 
+      (click)="exportPDF()">
+        Export to PDF</button>
+    <button type="button" mat-raised-button class="btn btn-default btn-style reset-btn" 
+      (click)="cancelClick()">
+        Cancel</button>
+  </div>
+</footer>
+</div>
+
+

@@ -1,0 +1,84 @@
+<div class="add-new-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="page-form-container">
+            <div class="mat-dialog-title">
+              <div class="text-header">
+                <h5 class="modal-title add-new-title text-center">ADD NEW CLIENT</h5>
+              </div>
+              <button type="button" class="close cancel-btn" (click)="cancelClick()" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <mat-dialog-content class="mat-typography">
+              <form class="page-form">
+                  <div class="form-group row">
+                      <label for="name" class="col-sm-3 col-form-label label-style">Sales Person : </label>
+                      <div class="col-sm-9">
+                          <!-- <select name="filtersales" id="filtersales" 
+                          class="form-control" [(ngModel)]="client.user_id">
+                            <option [ngValue]="undefined">--All Sales--</option>
+                            <option *ngFor="let salesperson of salepersonlist"
+                            [value]="salesperson.id">{{salesperson.name}}
+                            </option>
+                          </select> -->
+                          <select name="filtersales" id="filtersales"
+                          class="form-control" [(ngModel)]="selectedSalesperson">
+                            <option [ngValue]="undefined">--All Sales--</option>
+                            <option *ngFor="let salesperson of salepersonlist" [ngValue]="salesperson">{{salesperson.name}}</option>
+                          </select> 
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="accountnumber" class="col-sm-3 col-form-label label-style"> Account number : </label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control input-font-size" id="accountnumber" 
+                        name="accountnumber" placeholder="Enter accountnumber..." [(ngModel)]="client.accountnumber">
+                      </div>
+                    </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-3 col-form-label label-style"> Name : </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control input-font-size" id="name" 
+                      name="name" placeholder="Enter name..." [(ngModel)]="client.name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="address" class="col-sm-3 col-form-label label-style">Address : </label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control resize-textarea" id="address" 
+                        name="address"  rows="5" 
+                        placeholder="Enter address..." [(ngModel)]="client.address"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="email" class="col-sm-3 col-form-label label-style">Email : </label>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control input-font-size" 
+                      id="email" name="email" placeholder="Enter email..." [(ngModel)]="client.email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="phone" class="col-sm-3 col-form-label label-style">Phone : </label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control input-font-size" id="phone" 
+                        name="phone" placeholder="Enter phone number..." [(ngModel)]="client.phone" uaNumberOnly>
+                      </div>
+                  </div>
+                  <div class="form-group text-center">
+                    <button type="button" mat-raised-button class="btn btn-primary btn-style send-btn" 
+                      (click)="clickOnSave()">
+                        Save</button>
+                    <button type="button" mat-raised-button class="btn btn-default btn-style reset-btn" 
+                      (click)="clickOnReset()">
+                        Reset</button>
+                  </div>
+              </form>
+            </mat-dialog-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

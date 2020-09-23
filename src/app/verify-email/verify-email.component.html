@@ -1,0 +1,42 @@
+<div class="admin_login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-xs-8 offset-xs-2">
+        <div class="menper-logo">
+          <img src="../../../assets/login/Logo.png">
+        </div>
+        <div class="admin-text text-center">
+          <h1>MENPER</h1>
+        </div>
+        <mat-card class="forgot_password_card">
+          <mat-card-content class="forgot_password_text">
+            <h4 class="text-center">{{title}}</h4>
+            <p class="text-center">{{text}}</p>
+            <!-- <p class="text-center">Didn't recieve the code? <a href="#">Resend</a></p> -->
+            <div class="email_input" *ngIf='!hideCodeInput'>
+              <input type="text" style="width: 100%;" placeholder="Enter verification code" [(ngModel)]="code" name="code">
+            </div>
+            <div class="email_input" *ngIf='!hidePasswordInput'>
+                <input type="password" style="width: 100%;" placeholder="Enter password" [(ngModel)]="newPassword" name="newPassword">
+            </div>
+            <div class="email_input" *ngIf='!hidePasswordInput'>
+                <input type="password" style="width: 100%;" placeholder="Confirmation password" [(ngModel)]="confirmNewPassword" name="confirmNewPassword">
+            </div>
+            <div class="menper_btn text-center margintopstyle" *ngIf='!hideYesVerifyEmailButton'>
+              <button mat-button style="width: 100%;" class="sendcode_button" (click)="clickedYesVerifyEmailButton()">YES, VERIFY</button>
+            </div>
+            <div class="menper_btn text-center" *ngIf='!hideNotMyEmailButton'>
+                <button mat-button style="width: 100%;" class="sendcode_button" (click)="clickedNotMyEmailButton()">NO, THAT'S NOT MY EMAIL</button>
+            </div>
+            <div class="menper_btn text-center margintopstyle" *ngIf='!hideSetPasswordButton'>
+                <button mat-button style="width: 100%;" class="sendcode_button" (click)="clickedSetPasswordButton()">SET PASSWORD</button>
+            </div>
+            <div class="menper_btn text-center" *ngIf='!hideSetPasswordButton'>
+                <button mat-button style="width: 100%;" class="sendcode_button" (click)="clickedNotMyEmailButton()">NO, THAT'S NOT MY EMAIL</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

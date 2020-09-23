@@ -1,0 +1,30 @@
+<!-- <mat-toolbar-row class="dialog-toolbar">
+  <p class="letter-text text-center">M</p>
+  <span class="dialog-header">From: Menper Control</span>
+  <span class="example-spacer"></span>
+  <mat-icon class="clear-icon" (click)="cancelClick()">clear</mat-icon>
+</mat-toolbar-row> -->
+<mat-toolbar class="dialog-toolbar">  
+  <mat-toolbar-row>
+    <p class="letter-text text-center">M</p>
+    <span class="dialog-header">From: Menper Control</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="clear-icon" (click)="cancelClick()">clear</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+  <div class="dialog-subject">
+    <p>Subject: {{subjectTitle}}</p>
+    <p>Details:</p>
+    <div class="details_content">
+      <p>{{p1}}</p>
+      <p>{{p2}}</p>
+      <p>  
+        {{p3}}
+      </p>
+    </div>
+    <div class="suspend_worker_button text-center" *ngIf="!buttonDisabled">
+      <button class="suspend_btn" (click)="buttonClick()">{{buttonTitle}}</button>
+    </div>
+  </div>
+</mat-dialog-content>

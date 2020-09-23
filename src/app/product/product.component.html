@@ -1,0 +1,96 @@
+<div class="main-container">
+    <div class="col-md-12" style="padding:0">
+      <div class="header-container">
+        <div class="top-headerstyle">
+          <h5 class="text-left top-head-style">Product</h5>
+          <div class="add-space"></div>
+          <div class="add-new-btn-right" (click)="addNewProductClick()">
+              <button type="button" class="btn add-new-btn pull-right" >
+                <span class="plus-icon">
+                <i class="fa fa-plus"></i>
+                </span>ADD NEW PRODUCT</button>
+          </div> 
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-view">
+          <h6 class="view-style">View all</h6>
+          <div class="add-space"></div>
+          <div class="pull-right select-container">
+            <select name="filtersales" id="filtersales" (change)="selectCategory($event.target.value)"
+            class="form-control" [(ngModel)]="selectedCategory">
+              <option ng-selected="selectedCategory" value="">--All Category--</option>
+              <option ng-selected="selectedCategory" *ngFor="let category of categorylist" value={{category.id}}>{{category.name}}</option>
+            </select>
+            <!-- <input type="text"  placeholder="Search" [(ngModel)]="query"> -->
+          </div>
+          <div style="margin-left: 10px; margin-bottom: 12px;">
+           <input type="text" placeholder="Search" class="form-control" (input)="onKeypressEvent($event)" />
+          </div> 
+          <div class="pull-right select-container">
+            <label for="total" class="label-style">Total : </label>
+            <span class="badge badge-primary total-badge">{{productlistBySearch.length}}</span>
+          </div> 
+        </div>
+          <!-- <h6 class="view-style">View all</h6> -->
+          <div class="item-table table-scroll-container" style="margin-bottom: 20px;">
+            <div class="table-test" style="height: 600px;">
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr class="text-left table-row">
+                    <th>No</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Qty</th>
+                    <th>Flavor</th>
+                    <th>Price</th>
+                    <th>Size</th>
+                    <th>Product Picture</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body text-left">
+                  <!-- <tr *ngFor="let product of productlist | categoryFilter:selectedCategory let i=index"> -->
+                  <tr *ngFor="let product of productlistBySearch | paginate: { itemsPerPage: 10, currentPage: p, totalItems: totalItems } let i=index"> 
+                      <!-- <td>{{i+1}}</td> -->
+                    <td>{{product.number}}</td>
+                    <td>{{product.code}}</td>
+                    <td style="text-transform: uppercase;">{{product.name}}</td>
+                    <td *ngIf="product.category != undefined">{{product.category.name}}</td>
+                    <td *ngIf="product.category==undefined"></td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.flavor}}</td>
+                    <td>{{product.price | number:'1.2'}}</td>
+                    <td>{{product.size}}</td>
+                    <td>
+                      <div class="text-center">
+                        <div class="product-image">
+                          <!-- <img [src]="product.productPicture != undefined? product.productPicture.url : '' || '../../assets/product/default-product.jpeg' "> -->
+                          <img [src]="getProductImage(product)">
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="action-sec">
+                        <button class="action-btn" 
+                        [matMenuTriggerFor]="menu"><span>&#9662;</span></button>
+                        <mat-menu #menu="matMenu">
+                          <button mat-menu-item (click)="EditProductClick(product)">EDIT</button>
+                          <button mat-menu-item (click)="DeleteProductClick(product)">DELETE</button>
+                        </mat-menu>
+                      </div>
+                    </td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+              <app-loading-spinner  *ngIf="showSpinner"></app-loading-spinner>
+            </div>
+          </div>
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+      </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
+    <div class="admin-details">
+      <div class="admin-image">
+          <img src="../../../assets/login/Logo.png">
+      </div>
+      <div class="admin-name">
+        <p class="text-center mail-text">Menper distributors</p>
+      </div>
+    </div>
+    <div class="dashboard-item">
+      <mat-nav-list>
+        <div class="dashboard-nav">
+          <a mat-list-item matLine href="" routerLink="/category" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+            <span class="nav-img"><img src="assets/navigation/category-icon.png"></span>Categories</a>
+
+          <a mat-list-item href="" routerLink="/product" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+            <span class="nav-img"><img src="assets/navigation/product-icon.png"></span>Products</a>
+          
+          <a mat-list-item href="" routerLink="/role" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+            <span class="nav-img"><img src="assets/navigation/role-icon.png"></span>Roles</a>
+          
+          <a mat-list-item href="" routerLink="/sale" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+            <span class="nav-img"><img src="assets/navigation/saleperson-icon.png"></span>Salespersons</a>
+
+          <a mat-list-item href="" routerLink="/client" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+                <span class=""><img src="assets/navigation/client-icon.png" width="24px" height="18px"></span>Clients</a>
+          
+          <a mat-list-item href="" routerLink="/order" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+            <span class="nav-img"><img src="assets/navigation/order-icon.png"></span>Orders</a>
+
+          <a mat-list-item href="" routerLink="/notification" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">
+              <span class="nav-img"><img src="assets/navigation/notification-icon.png"></span>push notifications</a>
+
+          <a mat-list-item matLine (click)="doLogout()" class="logout-textstyle">
+            <span class="nav-img"><img src="assets/navigation/logout.png"></span>
+            <span style="color:#fff;">Logout</span></a>
+        </div>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <mat-toolbar class="tool-nav">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="sidenav.toggle()" aria-expanded="false" class="tagatool-toggle-btn">
+          <img src="../../../assets/navigation/toggle.png" width="25">
+      </button>
+      <span class="example-spacer"></span>
+      <div class="user-image">
+        <img src="../../../assets/user-image.jpg">
+      </div>
+      <div class="pull-right user-name">
+        <p>Ussok gfdgfdgfdfdsfdsfd fdsfd</p>
+      </div>
+    </mat-toolbar> -->
+    <div class="top-header-nav">
+      <div class="container-fluid paddinglr0">
+        <div class="row">
+          <div class="col-9">
+            <div class="d-inline-flex p-2">
+              <div class="toggle-nav">
+                <button
+                  type="button"
+                  aria-label="Toggle sidenav"
+                  mat-icon-button
+                  (click)="sidenav.toggle()" aria-expanded="false" class="tagatool-toggle-btn">
+                    <img src="../../../assets/navigation/toggle.png" width="25">
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="user-sec">
+              <div class="d-flex">
+                <div class="p-2">
+                  <div class="user-image">
+                    <img src="../../../assets/navigation/avatar.png">
+                  </div>
+                </div>
+                <div class="p-2 user-name" >
+                  <!-- <p>{{profile.profileType == 'adminsuper' ?'Admin User':'Admin Super'}}</p> -->
+                  <p>{{profile.name}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

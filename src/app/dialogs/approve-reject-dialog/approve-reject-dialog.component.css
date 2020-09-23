@@ -1,0 +1,70 @@
+.amend-btn{
+    background-color: #DF8C40;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 35px;
+    box-shadow: 0 0 40px rgba(223,140,64, .2);
+    border: 0;
+    outline: none;
+    margin: 0 5px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.approve-btn{
+    background-color: #0F80D1;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 35px;
+    box-shadow: 0 0 40px rgba(15,128,209, .3);
+    border: 0;
+    outline: none;
+    margin: 0 5px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.dialog-content{
+    padding: 20px 0 35px;
+}
+
+.amend-approve-btn{
+    padding: 50px 0 20px;
+}
+.clear-icon-sec{
+   padding-right: 30px;
+}
+.clear-icon{
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 600;
+}
+.mat-dialog-content{
+    margin: 0;
+    padding: 0;
+}
+.dialog-title{
+    font-family: Montserrat;
+    color: #0F80D1;
+    font-size: 25px;
+    white-space: pre-wrap;
+}
+
+.dialog-sub-title{
+    font-family: Montserrat;
+    color: #0F80D1;
+    font-size: 17px;
+    line-height: 25px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+@media (max-width: 515px) {
+    .approve-btn{
+        margin-top: 20px;
+    }
+}

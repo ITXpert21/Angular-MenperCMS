@@ -1,0 +1,55 @@
+.ok-btn{
+    background-color: #0A79A3;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 45px;
+    box-shadow: 0 0 40px rgb(159, 191, 204);
+    border: 0;
+    outline: none;
+    margin: 0 5px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.dialog-content{
+    padding: 45px 0 35px;
+}
+.mat-dialog-content{
+    max-height: 80vh;
+    margin: 0;
+    padding: 0;
+}
+.dialog-title{
+    color: #0A79A3;
+    font-size: 28px;
+    margin-bottom: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+.dialog-subtitle{
+    color: #0A79A3;
+    font-size: 23px;
+    margin-bottom: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+.dialog-description{
+    font-size: 18px;
+    font-weight: 400;
+    padding: 20px 0 0 0;
+    white-space: pre-wrap;
+}
+.ok-btn-sec{
+    padding: 50px 0 20px;
+}
+.clear-icon-sec{
+   padding-right: 30px;
+}
+.clear-icon{
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: 600;
+}
